@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>İzin Talep Et</title></head>
+<body>
+  <h2>İzin Talep Formu</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <label>Başlangıç Tarihi:</label>
+    <input type="date" name="baslangic" required><br>
+    <label>Bitiş Tarihi:</label>
+    <input type="date" name="bitis" required><br>
+    <label>Açıklama:</label><br>
+    <textarea name="aciklama"></textarea><br>
+    <button type="submit">Talep Gönder</button>
+  </form>
+
+  <a href="{% url 'anasayfa' %}">Anasayfaya Dön</a>
+</body>
+</html>

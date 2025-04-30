@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>İzin Talepleri</title></head>
+<body>
+  <h2>İzin Talepleri</h2>
+
+  {% if uyarilacaklar %}
+    <div style="background-color: #ffe6e6; border: 1px solid red; padding: 10px;">
+      <strong>Dikkat!</strong> Aşağıdaki personellerin yıllık izni 3 günden az:
+      <ul>
+        {% for p in uyarilacaklar %}
+          <li>{{ p.ad }} {{ p.soyad }} – {{ p.izin_gunu }} gün kaldı</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <br>
+  {% endif %}
+
+  <table border="1">
+    <tr>
+      <th>Personel</th>
+      <th>Tarih Aralığı</th>
+      <th>Açıklama</th>
+      <th>Durum</th>
+      <th>İşlem</th>
+    </tr>
+    {% for talep in talepler %}
+    <tr>
+      <td>{{ talep.personel }}</td>
+      <td>{{ talep.baslangic_tarihi }} → {{ talep.bitis_tarihi }}</td>
+      <td>{{ talep.aciklama }}</td>
+      <td>{{ talep.durum }}</td>
+      <td>
+        {% if talep.durum == 'Beklemede' %}
+          <a href="{% url 'izin_onayla' talep.id %}">Onayla</a> |
+          <a href="{% url 'izin_reddet' talep.id %}">Reddet</a>
+        {% else %}
+          İşlem tamam
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <br>
+  <a href="{% url 'anasayfa' %}">Anasayfa</a>
+</body>
+</html>

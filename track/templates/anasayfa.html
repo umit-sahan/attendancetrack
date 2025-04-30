@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Anasayfa</title></head>
+<body>
+  <h2>Hoş geldiniz {{ request.user.username }}</h2>
+
+  {% if mesaj %}
+    <p><strong>{{ mesaj }}</strong></p>
+  {% endif %}
+
+  <form method="POST" action="{% url 'giris_yap' %}">
+    {% csrf_token %}
+    <button type="submit">Giriş/Çıkış Kaydet</button>
+  </form>
+
+  <p><a href="{% url 'cikis' %}">Çıkış Yap</a></p>
+</body>
+</html>

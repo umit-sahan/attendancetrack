@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Giriş</title></head>
+<body>
+  <h2>Giriş Yap</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <label>Kullanıcı Adı:</label>
+    <input type="text" name="kullanici_adi"><br>
+    <label>Şifre:</label>
+    <input type="password" name="sifre"><br>
+    <button type="submit">Giriş</button>
+  </form>
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>

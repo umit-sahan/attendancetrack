@@ -1,0 +1,29 @@
+{% load duration_filters %}
+<!DOCTYPE html>
+<html>
+<head><title>Aylık Rapor</title></head>
+<body>
+  <h2>{{ ay }} Çalışma Raporu</h2>
+  <table border="1">
+    <tr>
+      <th>Personel</th>
+      <th>Toplam Süre (saat)</th>
+    </tr>
+    {% for k in kayitlar %}
+    <tr>
+      <td>{{ k.personel__ad }} {{ k.personel__soyad }}</td>
+      <td>
+        {% if k.toplam_sure %}
+          {{ k.toplam_sure.total_seconds|floatformat:2|divisibleby:3600 }}
+        {% else %}
+          0
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <br>
+  <a href="{% url 'anasayfa' %}">Anasayfa</a>
+</body>
+</html>
