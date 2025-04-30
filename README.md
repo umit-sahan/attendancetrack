@@ -72,11 +72,6 @@ AttendanceTrack is a Django-based personnel attendance management system. It all
    ```
 
 
-## 📌 Notes
-
-- UI is kept intentionally simple and functional
-- Docker and Celery/WebSocket support can be added for production usage
-
 ---
 
 ## 👨‍💻 Developer
