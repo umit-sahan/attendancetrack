@@ -40,7 +40,10 @@ AttendanceTrack is a Django-based personnel attendance management system. It all
 3. Install required packages:
 
    ```bash
-   pip install -r requirements.txt
+   pip install django
+   pip install djangorestframework
+   pip install psycopg2-binary
+
    ```
 
 4. Apply migrations:
